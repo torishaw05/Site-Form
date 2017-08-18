@@ -1,0 +1,23 @@
+body {
+background-color: rgb(240, 79, 143);
+color: white;
+background: -webkit-radial-gradient(rgb(162, 204, 255),rgb(240, 79, 143),rgb(224, 150, 246)); /* For Safari 5.1 to 6.0 */
+  }
+nav a {
+  text-decoration: none;
+  color: white;
+  float: right;
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+form p {
+  display: block;
+  display: flex;
+justify-content: center;
+margin: 40px;
+}
+form {
+  padding: 200px;
+}

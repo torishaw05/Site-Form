@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let user = { username: 'pinkponies', password: 'pinkponiesyass'};
+let user = { username: 'pinkpony', password: 'unicorn123'};
 
 function checkmate(req, res, next) {
   if (req.session.token) {
@@ -13,10 +13,12 @@ function checkmate(req, res, next) {
   }
 }
 
-router.get('/', checkmate, function(req, res)  {
+router.get('/', function(req, res)  {
+  console.log('hit');
   res.render('login');
 
 });
+
 router.get('/results', function(req,res, next) {
   if (req.session.token) {
     next();
@@ -44,36 +46,38 @@ router.post('/results', function(req, res) {
     result.array().forEach(function(error) {
       messages.push(error.msg);
     });
-
-
-
-
-
-  let obj = {
+    let obj = {
     errors:messages,
     username:req.body.username,
     password:req.body.password,
   }
-
-
-  console.log(req.body);
+console.log(req.body);
   res.render('signup', obj);
 
-
-  if (obj.username === user.username & obj.password ==user.password) {
+if (obj.username === user.username & obj.password ==user.password) {
     req.session.user = obj;
-    req.session.token='abcde001';
+    req.session.token='abcde';
     res.redirect('/results');
   }else{
     res.redirect('/');
   }
-
 });
 router.get('/logout', function(req,res){
   req.session.destroy(function(err) {
+
   console.log(err);
-});
+}); res.redirect('')
+  logout();
  res.redirect('/');
 });
+  });
+
+router.get("/logout", function(req, res) {
+  // req.session.destroy(); is good too
+  req.session.destroy(function(err) {
+    console.log(err);
+  });
+  res.redirect("/");
 });
-module.exports=router;
+
+module.exports = router;

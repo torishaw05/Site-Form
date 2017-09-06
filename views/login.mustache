@@ -1,8 +1,17 @@
 <link rel='stylesheet' href='style.css'>
 <center>
 <form action='results' method="post">
+  <h1> Please Log In </h1>
+  <h5> Your username and password must only be between 8-5 characters.</h5>
 <p>  <input type="text" name="username" placeholder="username"></p>
 <p>  <input type="password" name="password" placeholder="password"></p>
 <p>  <button type="submit">Login</button></p>
 </form>
 </center>
+
+{{#errors}}
+  {{.}}<br>
+{{/errors}}
+{{^errors}}
+  No Errors Found.
+{{/errors}}
